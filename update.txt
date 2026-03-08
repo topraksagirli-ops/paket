@@ -1,0 +1,28 @@
+Hello this is the first update the things you should do if you wanna start greatly
+
+
+Türkçe:
+A. Installer arayüzü ile temel kopyalama işlemini tamamlayın.
+B. Grafik arayüzün (X11) otomatik başlaması için:
+   echo 'if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then exec startx; fi' >> /etc/skel/.bash_profile
+   echo 'if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then exec startx; fi' >> ~/.bash_profile
+C. Boot ekranı (Splash) ve sessiz önyükleme yapılandırması:
+   sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*"/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub
+D. Önyükleme temasının mühürlenmesi:
+   plymouth-set-default-theme -R toprak-theme
+E. Değişikliklerin kernel ve bootloader seviyesinde güncellenmesi:
+   update-grub
+   update-initramfs -u
+
+English:
+A. Complete the basic copying process using the installer interface.
+B. For the graphical interface (X11) to start automatically:
+   echo ‘if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then exec startx; fi’ >> /etc/skel/.bash_profile
+   echo ‘if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then exec startx; fi’ >> ~/.bash_profile
+C. Boot screen (Splash) and silent boot configuration:
+   sed -i ‘s/GRUB_CMDLINE_LINUX_DEFAULT=“[^”]*“/GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash"/’ /etc/default/grub
+D. Locking the boot theme:
+   plymouth-set-default-theme -R toprak-theme
+E. Updating changes at the kernel and bootloader level:
+   update-grub
+   update-initramfs -u
